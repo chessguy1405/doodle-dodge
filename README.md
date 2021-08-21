@@ -4,16 +4,16 @@ A Lua game by Jeremy Nielsen
 
 The goal of the game is to get the highest possible score by surviving the longest.
 
-###Recent Updates:  
+### Recent Updates:  
 - 8/21/2021: Added player and controls  
 
-###Controls:  
+### Controls:  
 - WASD: move player  
 
-###Current Features:  
+### Current Features:  
 - Player that moves, has classic "pawn" image
 
-###Coming Soon:  
+### Coming Soon:  
 - Enemies  
 - High Score/Start screens  
 - Powerups  
