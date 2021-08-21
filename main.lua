@@ -3,15 +3,15 @@
 ]]
 
 -- Requirements, including libraries and classes.
-push = require 'push'
-Class = require 'class'
+push = require 'lib/push'
+Class = require 'lib/class'
 require 'Player'
 --Title
 TITLE = 'Doodle Dodge'
 
 --Window size
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 720
+WINDOW_WIDTH = 700
+WINDOW_HEIGHT = 360
 
 --Virtual size via push
 VIRTUAL_WIDTH = 432
@@ -37,4 +37,45 @@ function love.load()
 	resizable = true,
 	vsync = true,
 	canvas = false})
+
+	--introduce the Player
+	player1 = Player()
+end
+
+function love.resize(w, h)
+    push:resize(w, h)
+end
+
+function love.update(dt)
+	if love.keyboard.isDown('w') then
+		player1.dy = -PLAYER_SPEED
+	elseif love.keyboard.isDown('s') then
+		player1.dy = PLAYER_SPEED
+	else
+		player1.dy = 0
+	end
+	if love.keyboard.isDown('a') then
+		player1.dx = -PLAYER_SPEED
+	elseif love.keyboard.isDown('d') then
+		player1.dx = PLAYER_SPEED
+	else
+		player1.dx = 0
+	end
+	player1:update(dt)
+end
+
+function love.keypressed(key)
+	if key == 'escape' then
+		love.event.quit()
+	end
+end
+
+function love.draw()
+	push:start()
+
+	love.graphics.clear(40/255, 45/255, 52/255, 255/255)
+
+	player1:render()
+
+	push:finish()
 end
