@@ -7,9 +7,9 @@ Player = Class{}
 --Initialize the player, or establish its attributes.
 function Player:init()
 	
-	self.image = love.graphics.newImage('images/Player.png')
-	self.width = (self.image:getWidth() / 4)
-	self.height = (self.image:getHeight() / 4)
+	self.image = love.graphics.newImage('//images/Player.png')
+	self.width = (self.image:getWidth() / 6)
+	self.height = (self.image:getHeight() / 6)
 
 	self.x = VIRTUAL_WIDTH / 2 - (self.width/2)
 	self.y = VIRTUAL_HEIGHT / 2 - (self.height/2)
@@ -31,6 +31,6 @@ function Player:update(dt)
 end
 
 function Player:render()
-	love.graphics.draw(self.image, self.x, self.y, 0, 0.25, 0.25)
+	love.graphics.draw(self.image, self.x, self.y, 0, (1/6), (1/6))
 	--love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
 end

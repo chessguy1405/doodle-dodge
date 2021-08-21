@@ -5,13 +5,14 @@
 -- Requirements, including libraries and classes.
 push = require 'lib/push'
 Class = require 'lib/class'
-require 'Player'
+require 'class/Player'
+require 'class/Scoreboard'
 --Title
 TITLE = 'Doodle Dodge'
 
 --Window size
-WINDOW_WIDTH = 700
-WINDOW_HEIGHT = 360
+WINDOW_WIDTH = 640*1.5
+WINDOW_HEIGHT = 360*1.5
 
 --Virtual size via push
 VIRTUAL_WIDTH = 432
@@ -38,8 +39,14 @@ function love.load()
 	vsync = true,
 	canvas = false})
 
+	--add our font
+	scorefont = love.graphics.newFont('font.ttf', 36)
+
 	--introduce the Player
 	player1 = Player()
+
+	--add scoring system
+	score1 = Scoreboard(25, 25, scorefont)
 end
 
 function love.resize(w, h)
@@ -62,6 +69,7 @@ function love.update(dt)
 		player1.dx = 0
 	end
 	player1:update(dt)
+	--score1:update(dt)
 end
 
 function love.keypressed(key)
@@ -76,6 +84,7 @@ function love.draw()
 	love.graphics.clear(40/255, 45/255, 52/255, 255/255)
 
 	player1:render()
+	score1:render()
 
 	push:finish()
 end
