@@ -41,12 +41,14 @@ function love.load()
 
 	--add our font
 	scorefont = love.graphics.newFont('font.ttf', 36)
-
+	fpsfont = love.graphics.newFont('font.ttf', 12)
 	--introduce the Player
 	player1 = Player()
 
 	--add scoring system
 	score1 = Scoreboard(25, 25, scorefont)
+	startTime = os.time()
+	pwrUpScore = 0
 end
 
 function love.resize(w, h)
@@ -69,7 +71,11 @@ function love.update(dt)
 		player1.dx = 0
 	end
 	player1:update(dt)
-	--score1:update(dt)
+	nowTime = os.time()
+	if (nowTime-startTime)%3 == 0 then
+		score1.score = ((nowTime-startTime)/3) + (pwrUpScore)
+	end
+
 end
 
 function love.keypressed(key)
@@ -82,6 +88,9 @@ function love.draw()
 	push:start()
 
 	love.graphics.clear(40/255, 45/255, 52/255, 255/255)
+
+	love.graphics.setFont(fpsfont)
+	love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
 
 	player1:render()
 	score1:render()

@@ -6,20 +6,18 @@ The goal of the game is to get the highest possible score by surviving the longe
 
 ### Recent Updates:  
 - 8/21/2021: Added player, controls, and scoreboard  
+- 8/23/2021: Solved bug with scoreboard
 
 ### Controls:  
 - WASD: move player  
 
 ### Current Features:  
 - Player that moves, has classic "pawn" image
-- Scoreboard (incrementing is not working)
+- Scoreboard
 
 ### Coming Soon:  
 - Enemies  
 - High Score/Start screens  
 - Powerups  
-- (Fully Functional) Scoring 
 
 ## IMPORTANT NOTES
-1. ***DO NOT*** remove the commenting dashes on line 72 of main.lua.
-	This will enable score incrementing but disable player movement.
